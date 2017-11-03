@@ -20,6 +20,8 @@ int main(){
   TH1D* h_a = new TH1D("h_a", "h_a", 100,-1.0, 1.0);
   TH1D* h_b = new TH1D("h_b", "h_b", 100,-2.0,2.0);
   TH1D* h_c = new TH1D("h_c", "h_c", 100, -6.0, 6.0);
+  TH1D* h_2a = new TH1D("h_2a", "h_2a", 100, 0.0, 1.0);
+  TH1D* h_2b = new TH1D("h_2b","h_2b", 100, 0.0, 1.0);
 // Create a TRandom3 object to generate random numbers
 
   int seed = 12345;
@@ -27,7 +29,7 @@ int main(){
 
 // Generate some random numbers and fill histograms
 
-  const int numValues = 100000000;
+  const int numValues = 10000000;
 
   for (int i=0; i<numValues; ++i){
     double r1 = ran -> Rndm();
@@ -58,6 +60,19 @@ int main(){
     x3 = rsum - 6;
     h_c -> Fill(x3);    
   }
+
+  double xmax = 1.0;
+  for (int i = 0; i < numValues; i++) {
+    double r = ran -> Rndm();
+    double x = sqrt(xmax*xmax - r);
+    h_2a -> Fill(x); 
+    double u = ran -> Rndm();
+    if (u < x) {
+      h_2b -> Fill(x);
+
+    }
+  }
+
 
 
 

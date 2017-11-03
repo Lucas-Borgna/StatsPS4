@@ -16,10 +16,12 @@
   TH1D* h1 = (TH1D*)f -> Get("h_a");
   TH1D* h2 = (TH1D*)f -> Get("h_b");
   TH1D* h3 = (TH1D*)f -> Get("h_c");
+  TH1D* h4 = (TH1D*)f -> Get("h_2a");
+  TH1D* h5 = (TH1D*)f -> Get("h_2b");
 
   // Create a canvas, divide into two windows, 
   TCanvas *c1 = new TCanvas("c1", "Canvas 1", 400, 10, 600, 700);
-  c1->Divide(1,3);
+  c1->Divide(1,5);
 
   // Plot the uniform numbers in upper plot
   c1->cd(1);
@@ -43,4 +45,14 @@
   h3 -> SetXTitle("x");
   h3 -> SetYTitle("f(x;#xi");
   h3 -> Draw();
+
+  c1 -> cd(4);
+  h4 -> SetXTitle("x");
+  h4 -> SetYTitle("f(x)");
+  h4 -> Draw();
+
+  c1 -> cd(5);
+  h5 -> SetXTitle("x");
+  h5 -> SetYTitle("f(x)");
+  h5 -> Draw();
 } 
